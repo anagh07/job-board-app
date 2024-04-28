@@ -1,8 +1,15 @@
+import { useState } from 'react';
+import { FaMapMarkerAlt } from 'react-icons/fa';
+
 interface JobListingProps {
   job: job;
 }
 
 const JobListing = ({ job }: JobListingProps) => {
+  const [showFullDescription, setShowFullDescription] = useState(false);
+
+  let description = job.description.substring(0, 90);
+
   return (
     <div className='bg-white rounded-xl shadow-md relative'>
       <div className='p-4'>
@@ -11,7 +18,16 @@ const JobListing = ({ job }: JobListingProps) => {
           <h3 className='text-xl font-bold'>{job.title}</h3>
         </div>
 
-        <div className='mb-5'>{job.description}</div>
+        <div className='mb-5'>{showFullDescription ? job.description : description}</div>
+
+        <button
+          className='text-indigo-500 mb-5 hover:text-indigo-600'
+          onClick={() => {
+            setShowFullDescription((prevState) => !prevState);
+          }}
+        >
+          {showFullDescription ? 'less' : 'more'}
+        </button>
 
         <h3 className='text-indigo-500 mb-2'>{job.salary}</h3>
 
@@ -19,7 +35,7 @@ const JobListing = ({ job }: JobListingProps) => {
 
         <div className='flex flex-col lg:flex-row justify-between mb-4'>
           <div className='text-orange-700 mb-3'>
-            <i className='fa-solid fa-location-dot text-lg'></i>
+            <FaMapMarkerAlt className='inline text-lg mb-1' />
             {job.location}
           </div>
           <a
