@@ -1,9 +1,19 @@
-import React from 'react'
+import Hero from './components/Hero';
+import Navbar from './components/Navbar';
+import HomeCards from './components/HomeCards';
+import JobListings from './components/JobListings';
+import ViewAllJobsButton from './components/ViewAllJobsButton';
 
 const App = () => {
   return (
-    <div className='text-5xl'>App</div>
-  )
-}
+    <>
+      <Navbar />
+      <Hero />
+      <HomeCards />
+      <JobListings />
+      <ViewAllJobsButton />
+    </>
+  );
+};
 
-export default App
+export default App;
