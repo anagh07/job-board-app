@@ -18,7 +18,9 @@ const JobListing = ({ job }: JobListingProps) => {
           <h3 className='text-xl font-bold'>{job.title}</h3>
         </div>
 
-        <div className='mb-5'>{showFullDescription ? job.description : description}</div>
+        <div className='mb-5'>
+          {showFullDescription ? job.description : description + '...'}
+        </div>
 
         <button
           className='text-indigo-500 mb-5 hover:text-indigo-600'
